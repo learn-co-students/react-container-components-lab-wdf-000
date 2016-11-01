@@ -1,4 +1,5 @@
 const React = require('react')
+import 'whatwg-fetch';
 const MovieReviews = require('./MovieReviews.js')
 
 class LatestMovieReviewsContainer extends React.Component {
@@ -7,6 +8,14 @@ class LatestMovieReviewsContainer extends React.Component {
 		this.state = {
 			reviews: []
 		}
+	}
+
+	componentWillMount() {}
+
+	parseResults(json) {
+		for (var i = 0; i < json.results.length; i++) {
+			this.state.reviews.push(json.results[i])
+		};
 	}
 
 	render () {
