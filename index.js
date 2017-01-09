@@ -12,8 +12,10 @@ ReactDOM.render(
   <div className="app">
     <LatestMovieReviewsContainer />
     <SearchableMovieReviewsContainer />
+
   </div>,
   document.getElementById('main')
 );
 
 require('./test/index-test.js'); // Leave this in!
+    // <SearchableMovieReviewsContainer />

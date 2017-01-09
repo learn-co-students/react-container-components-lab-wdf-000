@@ -42,6 +42,7 @@ describe('<SearchableMovieReviewsContainer />', () => {
       mount(<Noop />) : mount(<SearchableMovieReviewsContainer />);
     wrapper.setState({ reviews: testReviews });
     wrapper.update();
+    debugger;
     expect(wrapper.find('.review').length).toEqual(testReviews.length);
   });
 
