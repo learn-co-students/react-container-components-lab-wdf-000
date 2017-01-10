@@ -1,5 +1,6 @@
 const path = require('path');
 const jsdom = require('jsdom').jsdom;
+import _$ from 'jquery';
 const fs = require('fs');
 const { fetch } = require('whatwg-fetch');
 
@@ -9,6 +10,7 @@ const exposedProperties = ['window', 'navigator', 'document'];
 global.expect = require('expect');
 global.document = jsdom(html);
 global.window = document.defaultView;
+const $ = _$(global.window);
 
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
