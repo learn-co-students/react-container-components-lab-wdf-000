@@ -3,10 +3,18 @@ const React = require('react');
 const MovieReviews = ({ reviews }) => {
     return (
       <div className='review-list'>
-        {reviews.map(({ display_title, mpaa_rating, critics_pick, byline, headline, summary_short }, i) => {
-          return <p className='review' key={i}>
-            {display_title, mpaa_rating, critics_pick, byline, headline, summary_short}
-          </p>
+        {reviews.map(({ byline, headline, summary_short, link, multimedia }, i) => {
+          return (
+            <div className='review' key={i}>
+              <h3>{headline}</h3>
+              <h5>{byline}</h5>
+              { multimedia ? 
+              <img src={multimedia.src} width={multimedia.width} height={multimedia.height} /> 
+              : null }
+              <p>{summary_short}</p>
+              <a href={link.url} target="_blank">{link.suggested_link_text}</a> 
+            </div>
+          );
           }
         )}
       </div>

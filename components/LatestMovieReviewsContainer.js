@@ -9,9 +9,11 @@ class LatestMovieReviewsContainer extends React.Component {
     this.state = {
       reviews: []
     }
+    this.handleClick = this.handleClick.bind(this);
   }  
 
-  componentWillMount() {
+  handleClick(e) {
+    e.preventDefault();
     axios.get('https://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=1821e94438d24626a8b7f9ca84a4f884')
     .then(({ data }) => {
       this.setState({ 
@@ -26,6 +28,7 @@ class LatestMovieReviewsContainer extends React.Component {
   render() {
     return (
       <div className='latest-movie-reviews'>
+        <button onClick={this.handleClick} >Click to get the Latest Movie Reviews</button>
         <MovieReviews reviews={this.state.reviews}/> 
       </div>
     );
